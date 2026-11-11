@@ -84,134 +84,16 @@ model Verification {
   @@map("verification")
 }
 
-// enum SlideGradient {
-//   BLUE_DARK
-//   BLUE
-//   BLUE_GOLD
-// }
-
-// enum SlideMediaType {
-//   IMAGE
-//   VIDEO
-// }
-
-// model HomeSlide {
-//   id String @id @default(cuid())
-
-//   // English content
-//   titleEn          String
-//   subtitleEn       String  @db.Text
-//   primaryLabelEn   String
-//   secondaryLabelEn String?
-
-//   // Amharic content
-//   titleAm          String
-//   subtitleAm       String  @db.Text
-//   primaryLabelAm   String
-//   secondaryLabelAm String?
-
-//   // Button destinations
-//   primaryHref   String
-//   secondaryHref String?
-
-//   // Background media
-//   mediaType   SlideMediaType @default(IMAGE)
-//   image       String?
-//   imageAlt    String?
-//   video       String?
-//   videoPoster String?
-
-//   // Visual styling
-//   gradient SlideGradient @default(BLUE_DARK)
-
-//   // Management
-//   sortOrder   Int     @default(0)
-//   isPublished Boolean @default(false)
-
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-
-//   @@index([isPublished, sortOrder])
-// }
-
-// enum EventCategory {
-//   WORSHIP
-//   CONFERENCE
-//   YOUTH
-//   OUTREACH
-//   PRAYER
-//   COMMUNITY
-//   OTHER
-// }
-
-// model Event {
-//   id String @id @default(cuid())
-
-//   titleEn       String
-//   titleAm       String?
-//   slug          String  @unique
-//   descriptionEn String  @db.Text
-//   descriptionAm String? @db.Text
-
-//   category EventCategory @default(OTHER)
-
-//   startDate DateTime
-//   endDate   DateTime?
-//   isAllDay  Boolean   @default(false)
-
-//   locationEn String?
-//   locationAm String?
-//   address    String?
-//   mapUrl     String?
-
-//   image    String?
-//   imageAlt String?
-
-//   isPublished Boolean @default(false)
-
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-
-//   @@index([isPublished, startDate])
-//   @@index([category])
-// }
-
-// model News {
-//   id            String   @id @default(cuid())
-
-//   titleEn       String
-//   titleAm       String?
-//   slug          String   @unique
-
-//   excerptEn     String?  @db.Text
-//   excerptAm     String?  @db.Text
-
-//   contentEn     String   @db.Text
-//   contentAm     String?  @db.Text
-
-//   image         String?
-//   imageAlt      String?
-
-//   author        String?
-
-//   category      NewsCategory @default(ANNOUNCEMENT)
-
-//   isPublished   Boolean  @default(false)
-
-//   publishedAt   DateTime?
-
-//   createdAt     DateTime @default(now())
-//   updatedAt     DateTime @updatedAt
-
-//   @@index([isPublished, publishedAt])
-//   @@index([category])
-// }
-
-// enum NewsCategory {
-//   ANNOUNCEMENT
-//   CHURCH_UPDATE
-//   TESTIMONY
-//   MINISTRY
-//   COMMUNITY
-//   OTHER
-// }
+model Product {
+  id           String   @id @default(cuid())
+  name         String
+  slug         String   @unique
+  description  String
+  price        Float
+  category     String
+  primaryImage String
+  images       String[] @default([])
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

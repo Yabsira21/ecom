@@ -6,7 +6,6 @@ import { NavDocuments } from "@/components/nav-documents";
 import { NavMain } from "@/components/nav-main";
 import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
-import { T, type Lang } from "@/lib/translations";
 import {
   Sidebar,
   SidebarContent,
@@ -18,30 +17,19 @@ import {
 } from "@/components/ui/sidebar";
 import {
   LayoutDashboardIcon,
-  ListIcon,
-  ChartBarIcon,
-  FolderIcon,
+  Package,
+  ShoppingBag,
   UsersIcon,
-  CameraIcon,
-  FileTextIcon,
   Settings2Icon,
-  CircleHelpIcon,
-  SearchIcon,
-  DatabaseIcon,
-  FileChartColumnIcon,
-  FileIcon,
-  CommandIcon,
-  Building,
-  Newspaper,
-  CalendarDays,
+  Store,
 } from "lucide-react";
 import Link from "next/link";
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Admin",
+    email: "admin@store.com",
+    avatar: "",
   },
   navMain: [
     {
@@ -50,135 +38,39 @@ const data = {
       icon: <LayoutDashboardIcon />,
     },
     {
-      title: "Carousel",
-      url: "/admin/carousel",
-      icon: <ListIcon />,
+      title: "Products",
+      url: "/admin/product",
+      icon: <Package />,
     },
     {
-      title: "Event",
-      url: "/admin/event",
-      icon: <CalendarDays />,
-    },
-    {
-      title: "News",
-      url: "/admin/news",
-      icon: <Newspaper />,
-    },
-    {
-      title: "Department",
+      title: "Orders",
       url: "#",
-      icon: <Building />,
+      icon: <ShoppingBag />,
     },
     {
-      title: "Users",
+      title: "Customers",
       url: "#",
       icon: <UsersIcon />,
     },
   ],
-  // navClouds: [
-  //   {
-  //     title: "Product",
-  //     icon: <CameraIcon />,
-  //     isActive: true,
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Proposal",
-  //     icon: <FileTextIcon />,
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Prompts",
-  //     icon: <FileTextIcon />,
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
-  // ],
-  navSecondary: [
-    // {
-    //   title: "Settings",
-    //   url: "#",
-    //   icon: <Settings2Icon />,
-    // },
-    // {
-    //   title: "Get Help",
-    //   url: "#",
-    //   icon: <CircleHelpIcon />,
-    // },
-    // {
-    //   title: "Search",
-    //   url: "#",
-    //   icon: <SearchIcon />,
-    // },
-  ],
-  documents: [
-    {
-      name: "Products",
-      url: "#",
-      icon: <DatabaseIcon />,
-    },
-    {
-      name: "Orders",
-      url: "#",
-      icon: <FileChartColumnIcon />,
-    },
-    {
-      name: "Donations",
-      url: "#",
-      icon: <FileIcon />,
-    },
-  ],
+  documents: [],
 };
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const [lang, setLang] = React.useState<Lang>("en");
-  const t = T[lang];
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
         <SidebarMenu>
-          <Link href={"/"}>
+          <Link href="/">
             <SidebarMenuItem>
               <SidebarMenuButton
                 className="data-[slot=sidebar-menu-button]:p-1.5!"
                 render={<a href="#" />}
               >
-                <span className="flex size-5 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand text-brand-foreground">
-                  <img
-                    src="/logo.jpg"
-                    alt="Geja Kalehiwot"
-                    className="size-full object-cover"
-                  />
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <Store className="size-4" />
                 </span>
-                <span className="text-base font-semibold">Geja Kalehiwot</span>
+                <span className="text-base font-semibold">E-Commerce Admin</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </Link>
@@ -186,8 +78,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
-        {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser />

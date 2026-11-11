@@ -16,7 +16,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "geja-kalehiwot.fly.storage.tigris.dev",
+        hostname: "ecom-local.fly.storage.tigris.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "ecom-local.t3.tigrisfiles.io",
+        pathname: "/**",
       },
     ],
   },

@@ -1,57 +1,54 @@
-import { HeroCarouselSkeleton } from "./_components/HeroCarouselSkeleton";
-
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header shell matching site layout */}
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      {/* Header shell */}
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-[1700px] items-center gap-3 px-3 sm:h-20 sm:gap-4 sm:px-8">
-          <div className="size-9 rounded-md bg-muted animate-pulse" />
-          <div className="flex items-center gap-2">
-            <div className="size-9 rounded-full bg-muted animate-pulse" />
-            <div className="hidden space-y-1 sm:block">
-              <div className="h-4 w-32 rounded bg-muted animate-pulse" />
-              <div className="h-2 w-16 rounded bg-muted/60 animate-pulse" />
-            </div>
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
+          <div className="flex items-center gap-3">
+            <div className="size-9 rounded-xl bg-muted animate-pulse" />
+            <div className="h-5 w-24 rounded bg-muted animate-pulse" />
           </div>
-          <div className="ml-auto flex items-center gap-3">
-            <div className="hidden items-center gap-4 lg:flex">
-              <div className="h-4 w-12 rounded bg-muted/60 animate-pulse" />
-              <div className="h-4 w-12 rounded bg-muted/60 animate-pulse" />
-              <div className="h-4 w-16 rounded bg-muted/60 animate-pulse" />
-            </div>
-            <div className="h-8 w-12 rounded bg-muted animate-pulse" />
+          <div className="flex items-center gap-3">
+            <div className="h-8 w-28 rounded bg-muted animate-pulse" />
             <div className="size-8 rounded-full bg-muted animate-pulse" />
           </div>
         </div>
       </header>
 
-      <main>
-        <HeroCarouselSkeleton />
-
-        {/* Events skeleton */}
-        <section className="bg-muted/40 py-20 mt-8">
-          <div className="mx-auto max-w-3xl text-center space-y-3">
-            <div className="mx-auto h-8 w-48 rounded-lg bg-muted animate-pulse" />
-            <div className="mx-auto h-4 w-80 rounded bg-muted/60 animate-pulse" />
+      <main className="flex-1">
+        {/* Hero skeleton */}
+        <section className="border-b border-border bg-muted/40 py-16 text-center">
+          <div className="mx-auto max-w-7xl px-4 space-y-4 flex flex-col items-center">
+            <div className="h-6 w-32 rounded-full bg-muted animate-pulse" />
+            <div className="h-10 w-96 rounded-lg bg-muted animate-pulse max-w-full" />
+            <div className="h-4 w-72 rounded bg-muted/60 animate-pulse max-w-full" />
+            <div className="h-11 w-80 rounded-full bg-muted animate-pulse mt-4 max-w-full" />
           </div>
-          <div className="relative mx-auto mt-12 max-w-[1700px]">
-            <div className="flex gap-5 overflow-hidden px-4 pb-2 sm:px-8">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="w-[88%] shrink-0 sm:w-[55%] lg:w-[42%]"
-                >
-                  <div className="aspect-[16/9] w-full rounded-xl bg-muted animate-pulse" />
-                  <div className="mt-3 h-5 w-3/4 rounded bg-muted animate-pulse" />
-                  <div className="mt-2 h-4 w-1/2 rounded bg-muted/60 animate-pulse" />
+        </section>
+
+        {/* Products skeleton */}
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-8">
+          <div className="h-7 w-40 rounded bg-muted animate-pulse mb-8" />
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-0"
+              >
+                <div className="aspect-square w-full bg-muted animate-pulse" />
+                <div className="p-4 space-y-3">
+                  <div className="h-5 w-3/4 rounded bg-muted animate-pulse" />
+                  <div className="h-3 w-full rounded bg-muted/60 animate-pulse" />
+                  <div className="flex items-center justify-between pt-2">
+                    <div className="h-4 w-12 rounded bg-muted animate-pulse" />
+                    <div className="h-8 w-20 rounded bg-muted animate-pulse" />
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </section>
       </main>
     </div>
   );
 }
-

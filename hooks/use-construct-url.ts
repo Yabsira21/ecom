@@ -7,5 +7,5 @@ export function useContructUrl(key: string | null | undefined): string {
   ) {
     return key;
   }
-  return `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME_IMAGES}.fly.storage.tigris.dev/${key}`;
+  return `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME_IMAGES}.t3.tigrisfiles.io/${key}`;
 }
